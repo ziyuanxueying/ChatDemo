@@ -16,7 +16,7 @@ public class ContextMenuActivity extends BaseActivity{
 		// TODO Auto-generated method stub
         EMMessage message = getIntent().getParcelableExtra("message");
 		
-		int type = message.getType().ordinal();
+//		int type = message.getType().ordinal();
 //		if (type == EMMessage.Type.TXT.ordinal()) {
 //		    if(message.getBooleanAttribute(Constant.MESSAGE_ATTR_IS_VIDEO_CALL, false) ||
 //		            message.getBooleanAttribute(Constant.MESSAGE_ATTR_IS_VOICE_CALL, false)){
