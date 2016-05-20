@@ -29,7 +29,11 @@ import com.hyphenate.EMValueCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.utils.EaseUserUtils;
-
+/**
+ * 个人信息
+ * @author fj
+ *
+ */
 public class PersionInfoActivity extends BaseActivity {
 	private static final int REQUESTCODE_PICK = 1;
 	private static final int REQUESTCODE_CUTTING = 2;
