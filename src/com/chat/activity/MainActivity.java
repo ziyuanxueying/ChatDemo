@@ -100,6 +100,8 @@ public class MainActivity extends BaseActivity {
 		} else if (getIntent().getBooleanExtra(Constant.ACCOUNT_REMOVED, false) && !isAccountRemovedDialogShow) {
 			showAccountRemovedDialog();
 		}
+		/** 异步获取当前用户的昵称和头像(从自己服务器获取，demo使用的一个第三方服务) */
+//		DemoHelper.getInstance().getUserProfileManager().asyncGetCurrentUserInfo();
 	}
 
 	@Override

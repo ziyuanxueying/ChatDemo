@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chat.DemoHelper;
 import com.chat.R;
 import com.chat.activity.ChatActivity;
 import com.chat.activity.MainActivity;
@@ -47,6 +48,8 @@ public class ConversationListFragment extends EaseConversationListFragment {
 	        super.setUpView();
 	        // 注册上下文菜单
 	        registerForContextMenu(conversationListView);
+	        /** 异步获取当前用户的昵称和头像(从自己服务器获取，demo使用的一个第三方服务) */
+//	        DemoHelper.getInstance().getUserProfileManager().asyncGetCurrentUserInfo();
 	        conversationListView.setOnItemClickListener(new OnItemClickListener() {
 
 	            @Override

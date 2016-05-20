@@ -22,6 +22,7 @@ import com.chat.DemoHelper;
 import com.chat.R;
 import com.chat.activity.ContextMenuActivity;
 import com.chat.activity.MainActivity;
+import com.chat.activity.PersionInfoActivity;
 import com.chat.db.Constant;
 import com.chat.db.RobotUser;
 import com.hyphenate.chat.EMClient;
@@ -189,9 +190,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentLi
 	public void onAvatarClick(String username) {
 		// TODO Auto-generated method stub
 		//头像点击事件
-//        Intent intent = new Intent(getActivity(), UserProfileActivity.class);
-//        intent.putExtra("username", username);
-//        startActivity(intent);
+        Intent intent = new Intent(getActivity(), PersionInfoActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
 	}
 
 	@Override
@@ -277,6 +278,5 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentLi
             }
             return null;
         }
-
     }
 }

@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.chat.DemoHelper;
 import com.chat.R;
 import com.chat.Utils.SharedPreferencesUtil;
 import com.chat.Utils.ToastUtil;
@@ -146,7 +146,7 @@ public class LoginActivity extends BaseActivity {
 //						Log.e("LoginActivity", "update current user nick fail");
 //					}
 					/** 异步获取当前用户的昵称和头像(从自己服务器获取，demo使用的一个第三方服务) */
-//					DemoHelper.getInstance().getUserProfileManager().asyncGetCurrentUserInfo();
+					DemoHelper.getInstance().getUserProfileManager().asyncGetCurrentUserInfo();
 
 				    SharedPreferencesUtil.setName(getApplicationContext(), userName);
 				    SharedPreferencesUtil.setPass(getApplicationContext(), password);

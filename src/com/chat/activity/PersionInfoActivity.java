@@ -46,6 +46,7 @@ public class PersionInfoActivity extends BaseActivity {
 	private TextView tvUsername;
 	private ProgressDialog dialog;
 	private RelativeLayout rlNickName;
+	private boolean enableUpdate;
 	@Override
 	protected void setView() {
 		// TODO Auto-generated method stub
@@ -55,6 +56,7 @@ public class PersionInfoActivity extends BaseActivity {
 	protected void setDate() {
 		// TODO Auto-generated method stub
 		username = getIntent().getStringExtra("username");
+		enableUpdate = getIntent().getBooleanExtra("setting", false);
 	}
 	@Override
 	protected void init() {
@@ -71,12 +73,28 @@ public class PersionInfoActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		rlNickName.setOnClickListener(this);
 		headAvatar.setOnClickListener(this);
-//		if (username.equals(EMClient.getInstance().getCurrentUser())) {
-//		}
-		tvUsername.setText(EMClient.getInstance().getCurrentUser());
-		EaseUserUtils.setUserNick(username, tvNickName);
-		EaseUserUtils.setUserAvatar(this, username, headAvatar);
-//		asyncFetchUserInfo(username);
+		if (enableUpdate) {
+			headPhotoUpdate.setVisibility(View.VISIBLE);
+			iconRightArrow.setVisibility(View.VISIBLE);
+			rlNickName.setOnClickListener(this);
+			headAvatar.setOnClickListener(this);
+		} else {
+			headPhotoUpdate.setVisibility(View.GONE);
+			iconRightArrow.setVisibility(View.INVISIBLE);
+		}
+		if (username != null){
+		if (username.equals(EMClient.getInstance().getCurrentUser())) {
+			tvUsername.setText(EMClient.getInstance().getCurrentUser());
+			EaseUserUtils.setUserNick(username, tvNickName);
+            EaseUserUtils.setUserAvatar(this, username, headAvatar);
+		} else {
+			//会话列表点击头像，跳转过来查看资料
+			tvUsername.setText(username);
+			EaseUserUtils.setUserNick(username, tvNickName);
+			EaseUserUtils.setUserAvatar(this, username, headAvatar);
+			asyncFetchUserInfo(username);
+		}
+	}
 	}
 	
 	@Override
@@ -283,6 +301,12 @@ public class PersionInfoActivity extends BaseActivity {
 	 * 返回
 	 */
 	public void back(View v){
+		finish();
+	}
+	
+	@Override
+	public void exit() {
+		// TODO Auto-generated method stub
 		finish();
 	}
 }
