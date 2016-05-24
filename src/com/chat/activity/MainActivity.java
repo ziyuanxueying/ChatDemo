@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -24,9 +23,9 @@ import com.chat.R;
 import com.chat.Utils.SharedPreferencesUtil;
 import com.chat.db.Constant;
 import com.chat.db.InviteMessgeDao;
+import com.chat.fragment.ContactListFragment;
 import com.chat.fragment.ConversationListFragment;
 import com.chat.fragment.SettingsFragment;
-import com.hyphenate.EMCallBack;
 import com.hyphenate.EMContactListener;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
@@ -35,8 +34,6 @@ import com.hyphenate.chat.EMConversation.EMConversationType;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.ui.EaseContactListFragment;
 import com.hyphenate.util.EMLog;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.update.UmengUpdateAgent;
 
 public class MainActivity extends BaseActivity {
 
@@ -44,7 +41,7 @@ public class MainActivity extends BaseActivity {
 //    private EaseConversationListFragment conversationListFragment;
     private ConversationListFragment conversationListFragment;
     /** 联系人列表 */
-    private EaseContactListFragment contactListFragment;
+    private ContactListFragment contactListFragment;
     /** 设置列表 */
     private SettingsFragment settingFragment;
     
@@ -131,7 +128,7 @@ public class MainActivity extends BaseActivity {
 		mTabs[1].setOnClickListener(this);
 		mTabs[2].setOnClickListener(this);
 		conversationListFragment = new ConversationListFragment();
-		contactListFragment = new EaseContactListFragment();
+		contactListFragment = new ContactListFragment();
 		settingFragment = new SettingsFragment();
 		fragments = new Fragment[] { conversationListFragment, contactListFragment, settingFragment };
 		// 添加显示第一个fragment

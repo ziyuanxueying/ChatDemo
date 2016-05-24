@@ -57,10 +57,15 @@
         </activity>
         <activity android:name="com.chat.activity.ChatActivity" >
         </activity>
-        <activity android:name="com.chat.activity.ContextMenuActivity" >
-        </activity>
         <activity
-            android:name="com.chat.activity.PersionInfoActivity" >
+            android:name="com.chat.activity.ContextMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyle" >
+        </activity>
+        <activity android:name="com.chat.activity.PersionInfoActivity" >
+        </activity>
+        <!-- 发送图片后，点击查看大图 -->
+        <activity android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity" >
         </activity>
 
         <!-- 地图 -->
@@ -81,7 +86,7 @@
             android:name="UMENG_APPKEY"
             android:value="56aefe07e0f55a250d001a7c" >
         </meta-data>
-        <!-- 
+        <!--
         <service
             android:name="com.umeng.update.net.DownloadingService"
             android:process=":DownloadingService" >
@@ -90,7 +95,8 @@
         <activity
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity> -->
+        </activity>
+        -->
 
         <meta-data
             android:name="UMENG_CHANNEL"

@@ -48,8 +48,6 @@ public class ConversationListFragment extends EaseConversationListFragment {
 	        super.setUpView();
 	        // 注册上下文菜单
 	        registerForContextMenu(conversationListView);
-	        /** 异步获取当前用户的昵称和头像(从自己服务器获取，demo使用的一个第三方服务) */
-//	        DemoHelper.getInstance().getUserProfileManager().asyncGetCurrentUserInfo();
 	        conversationListView.setOnItemClickListener(new OnItemClickListener() {
 
 	            @Override

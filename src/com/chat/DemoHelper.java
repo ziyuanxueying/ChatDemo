@@ -254,26 +254,26 @@ public class DemoHelper {
                 }
             }
         });
-        //设置表情provider
-//        easeUI.setEmojiconInfoProvider(new EaseEmojiconInfoProvider() {
-//            
-//            @Override
-//            public EaseEmojicon getEmojiconInfo(String emojiconIdentityCode) {
-//                EaseEmojiconGroupEntity data = EmojiconExampleGroupData.getData();
-//                for(EaseEmojicon emojicon : data.getEmojiconList()){
-//                    if(emojicon.getIdentityCode().equals(emojiconIdentityCode)){
-//                        return emojicon;
-//                    }
-//                }
-//                return null;
-//            }
-//
-//            @Override
-//            public Map<String, Object> getTextEmojiconMapping() {
-//                //返回文字表情emoji文本和图片(resource id或者本地路径)的映射map
-//                return null;
-//            }
-//        });
+        //设置表情provider,否则不显示发送的表情
+        easeUI.setEmojiconInfoProvider(new EaseEmojiconInfoProvider() {
+            
+            @Override
+            public EaseEmojicon getEmojiconInfo(String emojiconIdentityCode) {
+                EaseEmojiconGroupEntity data = EmojiconExampleGroupData.getData();
+                for(EaseEmojicon emojicon : data.getEmojiconList()){
+                    if(emojicon.getIdentityCode().equals(emojiconIdentityCode)){
+                        return emojicon;
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            public Map<String, Object> getTextEmojiconMapping() {
+                //返回文字表情emoji文本和图片(resource id或者本地路径)的映射map
+                return null;
+            }
+        });
         
         //不设置，则使用easeui默认的
 //        easeUI.getNotifier().setNotificationInfoProvider(new EaseNotificationInfoProvider() {

@@ -71,8 +71,6 @@ public class PersionInfoActivity extends BaseActivity {
 	@Override
 	protected void setOperation() {
 		// TODO Auto-generated method stub
-		rlNickName.setOnClickListener(this);
-		headAvatar.setOnClickListener(this);
 		if (enableUpdate) {
 			headPhotoUpdate.setVisibility(View.VISIBLE);
 			iconRightArrow.setVisibility(View.VISIBLE);
@@ -124,6 +122,10 @@ public class PersionInfoActivity extends BaseActivity {
 		}
 	}
 	
+	/**
+	 * 刷新用户头像~
+	 * @param username
+	 */
 	public void asyncFetchUserInfo(String username){
 		DemoHelper.getInstance().getUserProfileManager().asyncGetUserInfo(username, new EMValueCallBack<EaseUser>() {
 			

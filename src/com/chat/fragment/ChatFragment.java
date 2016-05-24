@@ -19,12 +19,14 @@ import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 import com.chat.DemoHelper;
+import com.chat.EmojiconExampleGroupData;
 import com.chat.R;
 import com.chat.activity.ContextMenuActivity;
 import com.chat.activity.MainActivity;
 import com.chat.activity.PersionInfoActivity;
 import com.chat.db.Constant;
 import com.chat.db.RobotUser;
+import com.chat.widget.ChatRowVoiceCall;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMGroup;
 import com.hyphenate.chat.EMMessage;
@@ -33,9 +35,14 @@ import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.hyphenate.easeui.ui.EaseChatFragment.EaseChatFragmentListener;
 import com.hyphenate.easeui.widget.chatrow.EaseChatRow;
 import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
+import com.hyphenate.easeui.widget.emojicon.EaseEmojiconMenu;
 import com.hyphenate.util.EasyUtils;
 import com.hyphenate.util.PathUtil;
-
+/**
+ * 显示出来的聊天对话页面fragment
+ * @author fj
+ *
+ */
 public class ChatFragment extends EaseChatFragment implements EaseChatFragmentListener{
 
 	//避免和基类定义的常量可能发生的冲突，常量从11开始定义
@@ -84,8 +91,8 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentLi
                 getActivity().finish();
             }
         });
-        //表情包
-//        ((EaseEmojiconMenu)inputMenu.getEmojiconMenu()).addEmojiconGroup(EmojiconExampleGroupData.getData());
+        //在菜单中加入表情包
+        ((EaseEmojiconMenu)inputMenu.getEmojiconMenu()).addEmojiconGroup(EmojiconExampleGroupData.getData());
     }
     
     @Override
@@ -95,10 +102,10 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentLi
         //增加扩展item
 //        inputMenu.registerExtendMenuItem(R.string.attach_video, R.drawable.em_chat_video_selector, ITEM_VIDEO, extendMenuItemClickListener);
 //        inputMenu.registerExtendMenuItem(R.string.attach_file, R.drawable.em_chat_file_selector, ITEM_FILE, extendMenuItemClickListener);
-//        if(chatType == Constant.CHATTYPE_SINGLE){
+        if(chatType == Constant.CHATTYPE_SINGLE){
 //            inputMenu.registerExtendMenuItem(R.string.attach_voice_call, R.drawable.em_chat_voice_call_selector, ITEM_VOICE_CALL, extendMenuItemClickListener);
 //            inputMenu.registerExtendMenuItem(R.string.attach_video_call, R.drawable.em_chat_video_call_selector, ITEM_VIDEO_CALL, extendMenuItemClickListener);
-//        }
+        }
     }
     
     @Override
@@ -217,7 +224,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentLi
 //	            Intent intent = new Intent(getActivity(), ImageGridActivity.class);
 //	            startActivityForResult(intent, REQUEST_CODE_SELECT_VIDEO);
 //	            break;
-//	        case ITEM_FILE: //一般文件
+	        case ITEM_FILE: //一般文件
 //	            //demo这里是通过系统api选择文件，实际app中最好是做成qq那种选择发送文件
 //	            selectFileFromLocal();
 //	            break;
@@ -272,8 +279,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentLi
                 // 语音通话,  视频通话
                 if (message.getBooleanAttribute(Constant.MESSAGE_ATTR_IS_VOICE_CALL, false) ||
                     message.getBooleanAttribute(Constant.MESSAGE_ATTR_IS_VIDEO_CALL, false)){
-                	//FJ改
-//                    return new EaseChatRow(getActivity(), message, position, adapter);
+                    return new ChatRowVoiceCall(getActivity(), message, position, adapter);
                 }
             }
             return null;
